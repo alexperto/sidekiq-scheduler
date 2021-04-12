@@ -69,9 +69,12 @@ module SidekiqScheduler
     # if the name is nil it returns a hash with all the
     # names end their schedules.
     def get_schedule(name = nil)
+      ap 'get_schedule'
       if name.nil?
+        ap "get_all_schedules"
         get_all_schedules
       else
+        ap "get schedule name: #{name}"
         encoded_schedule = SidekiqScheduler::RedisManager.get_job_schedule(name)
         encoded_schedule.nil? ? nil : JSON.parse(encoded_schedule)
       end

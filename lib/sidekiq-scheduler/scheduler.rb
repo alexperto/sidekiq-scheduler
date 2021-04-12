@@ -197,6 +197,7 @@ module SidekiqScheduler
     end
 
     def reload_schedule!
+      ap "RELOAD SCHEDULE from scheduler"
       if enabled
         Sidekiq.logger.info 'Reloading Schedule'
         clear_schedule!
